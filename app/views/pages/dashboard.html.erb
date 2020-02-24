@@ -1,0 +1,11 @@
+<h2>Welcome <%= @user.fullname %></h2>
+
+<div class="user-paintings">
+  <h3>Your paintings</h3>
+  <% @user.paintings.each do |painting| %>
+    <h4><%= painting.title %></h4>
+    <h5><%= painting.artist %></h5>
+    <%= link_to 'show', painting_path(painting) %>
+  <% end %>
+  <%= link_to 'Add a Painting', new_painting_path %>
+</div>
