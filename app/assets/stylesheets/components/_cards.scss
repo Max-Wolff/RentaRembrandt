@@ -1,0 +1,22 @@
+.cards {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: rgba(30,30,30, 0.8);
+  padding-bottom: 10px;
+}
+
+.cards img {
+  width: 50%;
+}
+
+.cards h2 {
+  text-align: center;
+}
+
+.container h2 {
+  text-align: center;
+  color: rgba(30,30,30, 0.8);
+  font-weight: lighter;
+  padding-bottom: 10px;
+}
