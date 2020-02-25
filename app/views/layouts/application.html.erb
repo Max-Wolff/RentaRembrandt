@@ -20,11 +20,11 @@
 
           <% if user_signed_in? %>
             <a href="<%= new_painting_path %>" class="btn btn-light">New Painting</a>
-            <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn btn-danger">Logout</a>
+            <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn logout-button">Logout</a>
             <a href="<%= dashboard_path %>"><img class="avatar dropdown-toggle" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" /></a>
           <% else %>
-            <a href="<%= new_user_session_path %>" class="btn btn-success">Log In</a>
-            <a href="<%= new_user_registration_path %>" class="btn btn-primary">Sign Up</a>
+            <a href="<%= new_user_session_path %>" class="btn login-button">Log In</a>
+            <a href="<%= new_user_registration_path %>" class="btn signup-button">Sign Up</a>
           <% end %>
 
       </div>
