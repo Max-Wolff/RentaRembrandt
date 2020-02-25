@@ -2,12 +2,20 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  &:hover {
+
+    .card-image {
+      transform: scale(1.2);
+    }
+  }
 }
 
 .card-trip > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
+  transition: transform .3s ease;
 }
 
 .card-trip h2 {
@@ -29,6 +37,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  background: white;
 }
 
 .card-trip-infos .card-trip-user {
