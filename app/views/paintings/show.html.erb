@@ -1,0 +1,21 @@
+<div class="banner">
+  <img class="photo" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
+</div>
+
+
+<div class="container ">
+  <div class="row">
+    <div class="col-8">
+      <h1>Artist : </h1>
+      <h3><%= @painting.artist %> </h3>
+      <h1>Title : </h1>
+      <h3><%= @painting.title %></h3>
+      <h1>Price: </h1>
+      <h3><%= @painting.price_per_day %></h3>
+      <h1>Address: </h1>
+      <h3><%= @painting.address %></h3>
+      <%= link_to "Go back to Paintings", paintings_path %>
+    </div>
+</div>
+</div>
+
