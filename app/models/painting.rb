@@ -5,4 +5,5 @@ class Painting < ApplicationRecord
   validates :artist, presence: true
   validates :price_per_day, presence: true
   validates :address, presence: true
+  has_one_attached :photo
 end
