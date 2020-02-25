@@ -18,6 +18,9 @@ gem 'uglifier'
 gem 'webpacker'
 # Devise gem for user authentication
 gem 'devise'
+# Gem for hosting images
+gem 'cloudinary', '~> 1.12.0'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
