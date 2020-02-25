@@ -3,22 +3,24 @@
 </div>
 
 <div class="full-card">
-  <% @user.paintings.each do |painting| %>
   <div class="card-trip">
-    <img src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
+    <img src="" />
     <div class="card-trip-infos">
       <div>
-        <h4><%= painting.title %></h4>
-        <h5><%= painting.artist %></h5>
-        <%= link_to 'show', painting_path(painting) %>
+        <h4>Title of Painting</h4>
+        <h5>Artist Name</h5>
       </div>
-      <h2 class="card-trip-pricing"><%= painting.price_per_day %>€ per Day</h2>
+      <h2 class="card-trip-pricing">Price in € per Day</h2>
       <img src="https://www.welt.de/img/kultur/kunst-und-architektur/mobile118037068/8842504347-ci102l-w1024/Rembrandt-Selbstbildnis-mit-roter-Muetze.jpg" class="card-trip-user avatar-bordered" />
     </div>
   </div>
+
+  <% @user.paintings.each do |painting| %>
+    <%= link_to (render 'dashboard-painting-card', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>
   <% end %>
 </div>
 
-<div class="d-flex justify-content-center">
-<%= link_to 'Add a Painting', new_painting_path %>
-</div>
+
+
+
+
