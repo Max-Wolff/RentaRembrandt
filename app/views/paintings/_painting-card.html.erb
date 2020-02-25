@@ -13,10 +13,10 @@
         <p><%= "Belongs to the one and only: #{@owner.first_name} #{@owner.last_name}" %></p>
       </div>
     <h2 class="card-trip-pricing"><%= painting.price_per_day %>€ per Day</h2>
-    <% unless painting.photo.attached? == false %>
-      <img class="card-image" src="<%= cl_image_tag @owner.photo.key %>" />
+    <% unless @owner.photo.attached? == false %>
+      <%= cl_image_tag @owner.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-bordered" %>
     <% else %>
-      <img class="card-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
+      <img class="card-trip-user avatar-bordered" src="https://image.flaticon.com/icons/svg/21/21104.svg" style="background-color: white;" />
     <% end %>
   </div>
 </div>
