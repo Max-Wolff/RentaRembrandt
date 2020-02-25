@@ -1,5 +1,5 @@
 class PaintingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
 
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
@@ -11,10 +11,12 @@ class PaintingsController < ApplicationController
 
   def new
     @painting = Painting.new
+    authorize @painting
   end
 
   def create
     @painting = Painting.new(painting_params)
+    authorize @painting
     @user = current_user
     @painting.user = @user
     if @painting.save
