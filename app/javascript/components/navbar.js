@@ -4,7 +4,7 @@ const updateNavbarOnScroll = () => {
   let scrollY = 0;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY >= window.innerHeight) {
+    if (window.scrollY >= (window.innerHeight / 2)) {
       navbar.classList.add('scrolled')
     } else {
       navbar.classList.remove('scrolled')
