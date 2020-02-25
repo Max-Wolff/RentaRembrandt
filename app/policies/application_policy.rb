@@ -34,6 +34,11 @@ class ApplicationPolicy
     false
   end
 
+  # was not in tony`s but makes sense for controller logic
+  def scope
+    Pundit.policy_scope!(user, record.class)
+  end
+
   class Scope
     attr_reader :user, :scope
 
@@ -43,7 +48,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      scope.all # in lewagon only "scope"
     end
   end
 end
