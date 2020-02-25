@@ -16,6 +16,23 @@
   text-shadow: none;
 }
 
+.btn-main-customizable {
+  background-color: #A9A9A9;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 30px;
+  border-radius: 50px;
+  font-weight: lighter;
+}
+
+.btn-main-customizable:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #A9A9A9;
+  border: 1px solid #A9A9A9;
+  text-shadow: none;
+}
+
 .signup-button {
   background-color: $signup-color;
   color: white;
@@ -54,4 +71,17 @@
 .logout-button {
   background: $logout-color;
   color: white;
+  border-radius: 50px;
+  font-weight: lighter;
+  padding: 8px 30px;
+  margin: 10px;
+  border: 1px solid white;
+}
+
+.logout-button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: $logout-color;
+  border: 1px solid $logout-color;
+  text-shadow: none;
 }
