@@ -6,6 +6,15 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
+  # To redirect the user to dashboard after login
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || dashboard_path
+  end
+  # To redirect the user to dashboard after signup
+  def after_sign_up_path_for(resource)
+    stored_location_for(resource) || dashboard_path
+  end
+
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
