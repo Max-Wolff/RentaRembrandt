@@ -32,10 +32,11 @@
 
 
 .card-trip .card-trip-infos {
+  height: 88px;
   padding: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   position: relative;
   background: white;
 }
