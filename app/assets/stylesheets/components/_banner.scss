@@ -8,6 +8,8 @@
   align-items: center;
   justify-content: space-around;
   color: white;
+  position: relative;
+  overflow: hidden;
 }
 
 .banner h1 {
@@ -19,4 +21,23 @@
   font-size: 30px;
   font-weight: lighter;
   margin-bottom: 50px;
+}
+
+.banner-picture {
+  position: absolute;
+  z-index: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  transition: opacity 1.5s ease;
+}
+
+.banner-text {
+  z-index: 1;
+  text-shadow: 2px 2px 3px #333;
+}
+
+.hidden {
+  opacity: 0;
 }
