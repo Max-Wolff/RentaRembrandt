@@ -4,19 +4,22 @@ class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
   def index
-    @paintings = Painting.all
-  end
+    @paintings = policy_scope(Painting) # .oder(:title) oder preis bzw. filter logic
+   end
 
   def show; end
 
   def new
-    @painting = Painting.new
+    @painting = current_user.paintings.new
+    authorize @painting
   end
 
+  # ADD NOTICES AS SOON AS PUNDIT LOGIC WORKS
+
   def create
-    @painting = Painting.new(painting_params)
-    @user = current_user
-    @painting.user = @user
+    @painting = current_user.paintings.new(painting_params)
+    @painting.user = current_user
+    authorize @painting
     if @painting.save
       redirect_to painting_path(@painting)
     else
@@ -24,11 +27,15 @@ class PaintingsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    if current_user == @painting.user
+    end
+  end
 
   def update
     @painting.update(painting_params)
     # redirect_to painting_path(@painting) => MUST BE LIKE user_paintings_path(@user)
+    # if and else logic like create as soon as pathing clear
   end
 
   def destroy
@@ -37,8 +44,10 @@ class PaintingsController < ApplicationController
   end
 
   private
+
   def set_painting
     @painting = Painting.find(params[:id])
+    authorize @painting
   end
 
   def painting_params
