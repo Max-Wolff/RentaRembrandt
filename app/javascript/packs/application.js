@@ -1,13 +1,8 @@
 import "bootstrap";
 
-const navbar = document.querySelector('#navbar-landing');
+import { updateNavbarOnScroll } from '../components/navbar';
+import { bannerCarousel } from '../components/banner';
 
-let scrollY = 0;
+updateNavbarOnScroll();
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY >= window.innerHeight) {
-    navbar.classList.add('scrolled')
-  } else {
-    navbar.classList.remove('scrolled')
-  }
-});
+bannerCarousel();

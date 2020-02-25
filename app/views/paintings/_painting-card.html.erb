@@ -1,0 +1,18 @@
+<div class="card-trip">
+
+  <% unless painting.photo.attached? == false %>
+  <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill, class: "card-image" %>
+  <% else %>
+  <img class="card-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
+  <% end %>
+
+  <div class="card-trip-infos">
+      <div>
+        <% @owner = User.find(painting.user_id) %>
+        <h2>"<%= painting.title %>" by <%= painting.artist %></h2>
+        <p><%= "Belongs to the one and only: #{@owner.first_name} #{@owner.last_name}" %></p>
+      </div>
+    <h2 class="card-trip-pricing"><%= painting.price_per_day %>€ per Day</h2>
+    <img src="https://www.welt.de/img/kultur/kunst-und-architektur/mobile118037068/8842504347-ci102l-w1024/Rembrandt-Selbstbildnis-mit-roter-Muetze.jpg" class="card-trip-user avatar-bordered" />
+  </div>
+</div>
