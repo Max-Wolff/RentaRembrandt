@@ -9,19 +9,46 @@
 }
 
 .btn-main:hover {
-  opacity: 0.8;
   text-decoration: none;
-  color: white;
+  color: rgba(0, 0, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+  background-color: white;
+  text-shadow: none;
 }
 
 .signup-button {
-  background: $signup-color;
+  background-color: $signup-color;
   color: white;
+  border-radius: 50px;
+  font-weight: lighter;
+  padding: 8px 30px;
+  border: white;
+}
+
+.signup-button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: $signup-color;
+  border: 1px solid $signup-color;
+  text-shadow: none;
 }
 
 .login-button {
-  background: $login-color;
+  background-color: $login-color;
   color: white;
+  border-radius: 50px;
+  font-weight: lighter;
+  padding: 8px 30px;
+  margin: 10px;
+  border: white;
+}
+
+.login-button:hover {
+  text-decoration: none;
+  background-color: white;
+  color: $login-color;
+  border: 1px solid $login-color;
+  text-shadow: none;
 }
 
 .logout-button {
