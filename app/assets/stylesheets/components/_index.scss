@@ -11,16 +11,10 @@
 @import "index-grid";
 @import "form";
 @import "dashboard";
-@import "show";
 @import "map";
 @import "show-grid";
+@import "search";
 
-#search-bar {
-
-  form {
-    display: flex;
-  }
-}
 
 .index-view {
   display: flex;
