@@ -34,7 +34,9 @@
     <%= f.submit "Add a booking", class: "btn btn-main-customizable" %>
   </div>
  <% end %>
-
+   <% if current_user == @owner %>
+     <%= link_to "Edit your Painting", edit_painting_path(@painting) %>
+    <% end %>
  </div>
 
 </div>
