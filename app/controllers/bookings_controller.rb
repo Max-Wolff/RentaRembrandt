@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to painting_path(@painting)
     else
-      render :new
+      render 'paintings/show'
     end
   end
 
