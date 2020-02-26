@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center show-container">
+<div class="justify-content-center show-container">
   <div class="show-card">
     <div class="card-trip">
 
@@ -22,29 +22,27 @@
         <% end %>
       </div>
     </div>
-
-    <h3>Book Now:</h3>
-
  </div>
 
-    <%= simple_form_for([@painting, Booking.new]) do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <h3>Book Now:</h3>
 
-      <div class="form-inputs">
-        <%= f.input :start_date, as: :date %>
-        <%= f.input :end_date, as: :date %>
-      </div>
 
-      <div class="form-actions">
-        <%= f.button :submit, class: "btn btn-primary"%>
-      </div>
-    <% end %>
-  
-    <% if current_user == @owner %>
-     <%= link_to "Edit your Painting", edit_painting_path(@painting) %>
-    <% end %>
+  <%= simple_form_for([@painting, Booking.new]) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  </div>
+    <div class="form-inputs">
+      <%= f.input :start_date, as: :date %>
+      <%= f.input :end_date, as: :date %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-primary"%>
+    </div>
+  <% end %>
+
+  <% if current_user == @owner %>
+   <%= link_to "Edit your Painting", edit_painting_path(@painting) %>
+  <% end %>
 
 </div>
