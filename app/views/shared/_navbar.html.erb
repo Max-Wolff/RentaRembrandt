@@ -16,7 +16,7 @@
         <% unless current_user.photo.attached? == false %>
           <a href="<%= dashboard_path %>"> <%= cl_image_tag current_user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "avatar dropdown-toggle" %></a>
         <% else %>
-          <a href="<%= dashboard_path %>"><img src="https://image.flaticon.com/icons/svg/21/21104.svg" class="avatar dropdown-toggle" alt="avatar"></a>
+          <a href="<%= dashboard_path %>"><img src="https://image.flaticon.com/icons/svg/21/21104.svg" class="avatar dropdown-toggle avatar-bordered" alt="avatar"></a>
         <% end %>
 
       <% else %>
