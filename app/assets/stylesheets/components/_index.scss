@@ -12,3 +12,29 @@
 @import "form";
 @import "dashboard";
 @import "map";
+
+#search-bar {
+
+  form {
+    display: flex;
+  }
+}
+
+.index-view {
+  display: flex;
+  padding: 0 .5em;
+
+  .index-map {
+    width: 60%;
+  }
+
+  #map {
+    position: sticky;
+    top: 6em;
+  }
+
+  .index-images {
+    width: 40%;
+    padding-right: .5em;
+  }
+}
