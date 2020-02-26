@@ -21,18 +21,19 @@
 }
 
 .btn-main-customizable {
-  background-color: #A9A9A9;
+  background-color: rgb(80, 177, 186);
   color: white;
   padding: 8px 30px;
   border-radius: 50px;
   font-weight: lighter;
+  margin-right: 5px;
 }
 
 .btn-main-customizable:hover {
   text-decoration: none;
   background-color: white;
-  color: #A9A9A9;
-  border: 1px solid #A9A9A9;
+  color: rgb(80, 177, 186);
+  border: 1px solid rgb(80, 177, 186);
   text-shadow: none;
 }
 

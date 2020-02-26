@@ -10,8 +10,7 @@
   <div id="user-actions">
 
       <% if user_signed_in? %>
-        <a href="<%= new_painting_path %>" class="btn btn-main-customizable">New Painting</a>
-        <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn logout-button">Logout</a>
+        <a href="<%= new_painting_path %>" class="btn btn-main-customizable">Add Painting</a>
 
         <% unless current_user.photo.attached? == false %>
           <a href="<%= dashboard_path %>"> <%= cl_image_tag current_user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "avatar dropdown-toggle" %></a>
