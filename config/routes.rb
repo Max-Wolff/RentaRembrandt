@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
 
   resources :paintings
-  resources :bookings, only: [:index, :show, :destroy]
+  resources :bookings, only: [:index, :show, :destroy, :update]
 
   resources :paintings, only: [:index, :show] do
     resources :bookings, only: [:new, :create]

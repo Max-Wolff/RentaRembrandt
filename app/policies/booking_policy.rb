@@ -14,10 +14,10 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user  # Only booking creator can update it
+    record.user == user || record.painting.user == user # Only booking creator can update it
   end
 
   def destroy?
-    record.user == user  # Only booking creator can delete it
+    record.user == user || record.painting.user == user  # Only booking creator can delete it
   end
 end
