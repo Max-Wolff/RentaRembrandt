@@ -20,6 +20,8 @@ gem 'webpacker'
 gem 'devise'
 # Gem for hosting images
 gem 'cloudinary', '~> 1.12.0'
+# Geocoding
+gem 'geocoder'
 
 
 group :development do

@@ -4,8 +4,17 @@ class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
   def index
-    @paintings = policy_scope(Painting) # .oder(:title) oder preis bzw. filter logic
-   end
+    @paintings = policy_scope(Painting)
+    @paintings = Painting.geocoded #returns paintings with coordinates
+
+    @markers = @paintings.map do |painting|
+      {
+        lat: painting.latitude,
+        lng: painting.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { painting: painting }),
+      }
+    end
+  end
 
   def show; end
 
