@@ -1,0 +1,50 @@
+.show-view {
+  width: 80vw;
+  margin: 0 auto;
+  background: white;
+  padding: 0 5vw;
+
+  .show-image {
+    margin-left: -5vw;
+    width: 80vw;
+    height: auto;
+  }
+
+  .show-info {
+    margin-top: 2em;
+    display: flex;
+    width: 100%;
+    padding-bottom: 2em;
+
+    .painting-info {
+      width: 70%;
+
+      .info-title {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+
+        .painting-title {
+        }
+
+        .owner-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+
+    .booking-form {
+      width: 30%;
+      border: 1px $main-green solid;
+      border-radius: 6px;
+      padding: 1em;
+
+      .booking-pricing {
+        padding-bottom: .5em;
+        border-bottom: 1px solid #DDD;
+      }
+    }
+  }
+}

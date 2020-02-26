@@ -6,6 +6,7 @@ import { updateNavbarOnScroll } from '../components/navbar';
 import { bannerCarousel } from '../components/banner';
 import { changeActiveTab } from '../components/dashboard';
 import { initMapbox } from '../plugins/init_mapbox';
+import { toggleDateInputs } from '../components/datepicker'
 
 
 updateNavbarOnScroll();
@@ -15,3 +16,5 @@ bannerCarousel();
 changeActiveTab();
 
 initMapbox();
+
+toggleDateInputs();
