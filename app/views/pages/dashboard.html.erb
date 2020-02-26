@@ -1,24 +1,82 @@
 <div class="d-flex justify-content-center">
-<h2><strong>Welcome <%= @user.fullname %></strong></h2>
+  <h2 class="dashboard-header"><strong>Welcome <%= @user.fullname %></strong></h2>
 </div>
 
-<div class="full-card">
-  <% @user.paintings.each do |painting| %>
-  <div class="card-trip">
-    <img src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
-    <div class="card-trip-infos">
-      <div>
-        <h4><%= painting.title %></h4>
-        <h5><%= painting.artist %></h5>
-        <%= link_to 'show', painting_path(painting) %>
-      </div>
-      <h2 class="card-trip-pricing"><%= painting.price_per_day %>€ per Day</h2>
-      <img src="https://www.welt.de/img/kultur/kunst-und-architektur/mobile118037068/8842504347-ci102l-w1024/Rembrandt-Selbstbildnis-mit-roter-Muetze.jpg" class="card-trip-user avatar-bordered" />
-    </div>
-  </div>
+<div class="dashboard-tabs">
+  <% if @user.bookings_as_owner.count > 0 %>
+    <h5 class="tab active-tab" style="width: 33%;" data-show="paintings">My Paintings</h5>
+    <h5 class="tab" style="width: 33%;" data-show="confirm-bookings">Confirm Bookings</h5>
+    <h5 class="tab" style="width: 33%;" data-show="upcoming-bookings">Upcoming Bookings</h5>
+  <% else %>
+    <h5 class="tab active-tab" style="width: 50%;" data-show="paintings">My Paintings</h5>
+    <h5 class="tab" style="width: 50%;" data-show="upcoming-bookings">Upcoming Bookings</h5>
   <% end %>
 </div>
 
-<div class="d-flex justify-content-center">
-<%= link_to 'Add a Painting', new_painting_path %>
+<div id="paintings" class="tab-content">
+  <div class="full-card">
+    <% @user.paintings.each do |painting| %>
+      <%= link_to (render 'shared/painting-card', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Add a Painting', new_painting_path %>
+  </div>
+</div>
+
+<div id="confirm-bookings" class="dashboard-confirm tab-content hide-content">
+  <div class="booking-list">
+    <% @user.bookings_as_owner.each do |booking| %>
+      <div class="booking">
+
+        <%= cl_image_tag booking.painting.photo.key, height: 400, width: 600, crop: :fill, alt: "painting", class: "booking-image" %>
+
+        <div class="booking-info">
+          <h3><%= booking.painting.title %></h3>
+          <h4><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h4>
+          <p><%= booking.painting.price_per_day %>€ per day - <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€ total</p>
+          <div class="booking-actions">
+            <h1>✅</h1>
+            <h1>❌</h1>
+          </div>
+        </div>
+
+        <div class="user-info">
+          <h3>Rented by: <%= booking.user.fullname %></h3>
+
+          <% unless booking.user.photo.attached? == false %>
+            <%= cl_image_tag booking.user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-large" %>
+          <% end %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div id="upcoming-bookings" class="dashboard-upcoming tab-content hide-content">
+  <div class="booking-list">
+    <% @user.bookings_as_owner.each do |booking| %>
+      <div class="booking">
+
+        <%= cl_image_tag booking.painting.photo.key, height: 400, width: 600, crop: :fill, alt: "painting", class: "booking-image" %>
+
+        <div class="booking-info">
+          <h3><%= booking.painting.title %></h3>
+          <h4><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h4>
+          <p><%= booking.painting.price_per_day %>€ per day - <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€ total</p>
+          <h4>Booking due in <%= (booking.start_date - Date.today).to_i %> days</h4>
+        </div>
+
+        <div class="user-info">
+          <h3>Rented by: <%= booking.user.fullname %></h3>
+
+          <% unless booking.user.photo.attached? == false %>
+            <%= cl_image_tag booking.user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-large" %>
+          <% end %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
 </div>
