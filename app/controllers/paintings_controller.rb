@@ -13,6 +13,11 @@ class PaintingsController < ApplicationController
     end
 
     @markers = @paintings.map do |painting|
+      if painting.latitude.nil?
+        painting.latitude = 52.5067
+        painting.longitude = 13.4392
+        painting.save!
+      end
       {
         lat: painting.latitude,
         lng: painting.longitude,
@@ -49,7 +54,6 @@ class PaintingsController < ApplicationController
 
   def update
     @painting.update(painting_params)
-    # redirect_to painting_path(@painting) => MUST BE LIKE user_paintings_path(@user)
     # if and else logic like create as soon as pathing clear
     redirect_to painting_path(@painting)
   end
