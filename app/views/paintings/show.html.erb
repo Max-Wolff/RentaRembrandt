@@ -25,6 +25,8 @@
 
     <h3>Book Now:</h3>
 
+ </div>
+
     <%= simple_form_for([@painting, Booking.new]) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -37,6 +39,10 @@
       <div class="form-actions">
         <%= f.button :submit, class: "btn btn-primary"%>
       </div>
+    <% end %>
+  
+    <% if current_user == @owner %>
+     <%= link_to "Edit your Painting", edit_painting_path(@painting) %>
     <% end %>
 
   </div>
