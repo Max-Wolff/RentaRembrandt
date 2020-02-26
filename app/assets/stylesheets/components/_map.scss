@@ -2,6 +2,10 @@
   max-width: 250px;
   max-height: 120px;
 }
+.mapboxql-marker {
+  margin: 0;
+  position: absolute;
+}
 
 .mapboxgl-popup-content {
   text-align: center;
