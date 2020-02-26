@@ -1,28 +1,42 @@
+<div class="d-flex justify-content-center show-container">
+<div class="show-card">
+  <div class="card-trip">
 
-<% if @painting.photo.attached? %>
-  <%= cl_image_tag @painting.photo.key, height: 300, width: 400, crop: :fill, class: "photo" %>
+  <% unless @painting.photo.attached? == false %>
+    <%= cl_image_tag @painting.photo.key, height: 300, width: 400, crop: :fill, class: "card-image" %>
   <% else %>
-    <img class="photo" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
-<% end %>
+    <img class="card-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
+  <% end %>
 
-<div class="container" align="center">
-  <div class="row " >
-    <div class="col-6">
-      <h1>Artist : <%= @painting.artist %></h1>
-      <h1>Title : <%= @painting.title %></h1>
-      <h1>Price : <%= @painting.price_per_day %></h1>
-      <h1>Address : <%= @painting.address %></h1>
-      <%= link_to "Go back to Paintings", paintings_path %>
-    </div>
-
-
-    <div class="col-4">
-      <%= simple_form_for (Booking.new) do |f| %>
-      <%= f.input :start_date, as: :date %>
-      <%= f.input :end_date, as: :date %>
-      <%= f.submit "Add a booking", class: "btn btn-primary" %>
-     <% end %>
-    </div>
+  <div class="card-trip-infos">
+      <div>
+        <% @owner = User.find(@painting.user_id) %>
+        <h2>"<%= @painting.title %>" by <%= @painting.artist %></h2>
+        <p><%= "Belongs to the one and only: #{@owner.first_name} #{@owner.last_name}" %></p>
+      </div>
+    <h2 class="card-trip-pricing"><%= @painting.price_per_day %>€ per Day</h2>
+    <% unless @owner.photo.attached? == false %>
+      <%= cl_image_tag @owner.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-bordered" %>
+    <% else %>
+      <img class="card-trip-user avatar-bordered" src="https://image.flaticon.com/icons/svg/21/21104.svg" style="background-color: white;" />
+    <% end %>
+  </div>
 </div>
+
+<h3>Book Now:</h3>
+
+  <%= simple_form_for (Booking.new) do |f| %>
+  <div class="p-3">
+  <%= f.input :start_date, as: :date %>
+  </div>
+  <%= f.input :end_date, as: :date %>
+  <div class="d-flex justify-content-center mt-5 mb-3">
+    <%= f.submit "Add a booking", class: "btn btn-main-customizable" %>
+  </div>
+ <% end %>
+
+ </div>
+
 </div>
+
 
