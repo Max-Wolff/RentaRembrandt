@@ -36,8 +36,8 @@
           <h4><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h4>
           <p><%= booking.painting.price_per_day %>€ per day - <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€ total</p>
           <div class="booking-actions">
-            <h1>✅</h1>
-            <h1>❌</h1>
+            <h1><%= link_to 'icon', booking_path(booking), method: :patch %></h1>
+            <h1><%= link_to 'icon', booking_path(booking), method: :delete %></h1>
           </div>
         </div>
 
@@ -56,7 +56,7 @@
 
 <div id="upcoming-bookings" class="dashboard-upcoming tab-content hide-content">
   <div class="booking-list">
-    <% @user.bookings_as_owner.each do |booking| %>
+    <% @user.bookings_as_owner.where(confirmed: true).each do |booking| %>
       <div class="booking">
 
         <%= cl_image_tag booking.painting.photo.key, height: 400, width: 600, crop: :fill, alt: "painting", class: "booking-image" %>
