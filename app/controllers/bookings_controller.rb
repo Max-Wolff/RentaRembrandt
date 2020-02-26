@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :destroy]
+  before_action :set_booking, only: [:show, :destroy, :update]
   before_action :set_painting, only: [:create]
 
   def index
@@ -27,9 +27,15 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking.confirmed = true
+    @booking.save
+    redirect_to dashboard_path
+  end
+
   def destroy
     @booking.delete
-    redirect_to dashboard_path(current_user)
+    redirect_to dashboard_path
   end
 
   private
