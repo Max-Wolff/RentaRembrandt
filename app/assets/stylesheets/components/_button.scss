@@ -13,26 +13,27 @@
 
 .btn-main:hover {
   text-decoration: none;
-  color: rgba(0, 0, 0, 1);
+  color: white;
   border: 1px solid rgba(0, 0, 0, 1);
-  background-color: white;
+  background-color: #4AB1BA;
+  border: 1px solid #4AB1BA;
   text-shadow: none;
 }
 
 .btn-main-customizable {
-  background-color: #A9A9A9;
+  background-color: rgb(80, 177, 186);
   color: white;
-  border: 1px solid white;
   padding: 8px 30px;
   border-radius: 50px;
   font-weight: lighter;
+  margin-right: 5px;
 }
 
 .btn-main-customizable:hover {
   text-decoration: none;
   background-color: white;
-  color: #A9A9A9;
-  border: 1px solid #A9A9A9;
+  color: rgb(80, 177, 186);
+  border: 1px solid rgb(80, 177, 186);
   text-shadow: none;
 }
 
@@ -42,7 +43,6 @@
   border-radius: 50px;
   font-weight: lighter;
   padding: 8px 30px;
-  border: 1px solid white;
 }
 
 .signup-button:hover {
@@ -60,7 +60,6 @@
   font-weight: lighter;
   padding: 8px 30px;
   margin: 10px;
-  border: 1px solid white;
 }
 
 .login-button:hover {
@@ -78,7 +77,6 @@
   font-weight: lighter;
   padding: 8px 30px;
   margin: 10px;
-  border: 1px solid white;
 }
 
 .logout-button:hover {

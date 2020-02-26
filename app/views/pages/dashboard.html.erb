@@ -1,5 +1,12 @@
 <div class="d-flex justify-content-center sticky-top">
+
   <h2 class="dashboard-header"><strong>Welcome <%= @user.fullname %></strong><%= link_to ('<i class="far fa-edit" style="color: black; margin-left: .7em;"></i>').html_safe, edit_user_registration_path %></h2>
+
+  <% unless current_user.photo.attached? == false %>
+    <%= cl_image_tag current_user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar-big" %>
+  <% else %>
+    <img src="https://image.flaticon.com/icons/svg/21/21104.svg" class="avatar avatar-bordered" alt="avatar">
+  <% end %>
 </div>
 
 <div class="dashboard-tabs">
@@ -20,7 +27,7 @@
     <% end %>
   </div>
   <div class="d-flex justify-content-center">
-    <%= link_to 'Add a Painting', new_painting_path %>
+    <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn logout-button">Logout</a>
   </div>
 </div>
 
