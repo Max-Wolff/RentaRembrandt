@@ -28,8 +28,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.confirmed = true
-    @booking.save
+    @booking.update_attribute('confirmed', true)
     redirect_to dashboard_path
   end
 
