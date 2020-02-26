@@ -2,13 +2,19 @@
   margin: 2em;
 }
 
+.d-flex {
+  position: sticky;
+  top: -2.7em;
+  z-index: 1;
+}
+
 .dashboard-tabs {
   display: flex;
   justify-content: space-around;
   background-color: #CCC;
   border-radius: 10px;
   padding: 1px;
-  margin-bottom: 2em;
+  margin: 0 1em 2em 1em;
 
   h5 {
     text-align: center;
