@@ -22,6 +22,8 @@ gem 'devise'
 gem 'cloudinary', '~> 1.12.0'
 # Geocoding
 gem 'geocoder'
+# Gem for the search-bar
+gem 'pg_search', '~> 2.3.0'
 
 
 group :development do

@@ -8,4 +8,11 @@ class Painting < ApplicationRecord
   validates :price_per_day, presence: true
   validates :address, presence: true
   after_validation :geocode, if: :will_save_change_to_address?
+
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_artist,
+    against: [ :title, :artist ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
