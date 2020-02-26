@@ -8,8 +8,7 @@
     <div>
       <% @owner = User.find(painting.user_id) %>
       <h2>"<%= painting.title %>" by <%= painting.artist %></h2>
-      <p><%= "Belongs to: #{@owner.first_name} #{@owner.last_name}" %></p>
+      <p><%= "Belongs to: #{@owner.first_name} #{@owner.last_name} || #{painting.price_per_day}€ per Day" %></p>
     </div>
-  <h2 class="card-trip-pricing"><%= painting.price_per_day %>€ per Day</h2>
 </div>
 
