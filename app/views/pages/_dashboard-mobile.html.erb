@@ -16,7 +16,7 @@
   <div id="paintings" class="tab-content">
     <div class="full-card-mobile">
       <% @user.paintings.each do |painting| %>
-        <%= link_to (render 'shared/painting-card', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>
+        <%= link_to (render 'shared/painting-card-dashboard', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>
       <% end %>
     </div>
   </div>
