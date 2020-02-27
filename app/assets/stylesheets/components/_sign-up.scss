@@ -1,0 +1,31 @@
+.jellyfish {
+  background-image: url("https://i.ytimg.com/vi/al4MT9Kc1Gs/maxresdefault.jpg");
+  background-repeat: no-repeat;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  position: absolute;
+  z-index: 0;
+  background-size: cover;
+  object-fit: cover;
+  color: white;
+  overflow: hidden;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.text-muted {
+  color: white !important;
+  font-weight: bold;
+}
+
+.jellyfish-picture {
+  position: absolute;
+  z-index: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  transition: opacity 1.5s ease;
+}
