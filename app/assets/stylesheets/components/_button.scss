@@ -131,8 +131,45 @@
 }
 
 #captcha-image {
-  margin: 1em 0 0 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1em auto;
   width: 250px;
-  height: auto;
-  cursor: pointer;
+  height: 50px;
+  background: white;
+  border: 1px #AAA solid;
+
+  .checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px #AAA solid;
+    cursor: pointer;
+    text-align: center;
+
+    .fa-check {
+      display: none;
+      color: $login-color;
+    }
+
+    .fa-check.checked {
+      display: block;
+    }
+  }
+
+  p {
+    margin: 0;
+    color: black;
+    padding-right: 4em;
+    font-weight: lighter;
+    font-size: .8em;
+    text-shadow: none;
+  }
+
+  .captcha {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/RecaptchaLogo.svg/1200px-RecaptchaLogo.svg.png');
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+  }
 }
