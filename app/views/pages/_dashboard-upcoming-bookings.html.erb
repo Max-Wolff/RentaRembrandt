@@ -1,6 +1,6 @@
-<div id="confirm-bookings" class="dashboard-confirm tab-content hide-content">
+<div id="upcoming-bookings" class="dashboard-upcoming tab-content hide-content">
   <div class="booking-list">
-    <% @user.bookings_as_owner.where(confirmed: false).each do |booking| %>
+    <% @user.bookings_as_owner.where(confirmed: true).each do |booking| %>
       <div class="booking">
 
         <% unless booking.painting.photo.attached? == false %>
@@ -11,21 +11,18 @@
 
         <div class="confirmation-info">
 
-          <div class="booking-info">
-            <h5> <strong><%= booking.painting.title %></strong> </h5>
-            <h5><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h5>
-            <h5>Price per Day: <%= booking.painting.price_per_day %>€</h5>
-            <h5>Total Price: <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€</h5>
-            <div class="booking-actions">
-              <h1><%= link_to ('<i class="far fa-check-circle" style="color: #00DD66;"></i>').html_safe, booking_path(booking), method: :patch %></h1>
-              <h1><%= link_to ('<i class="far fa-times-circle" style="color: #FF4444;"></i>').html_safe, booking_path(booking), method: :delete %></h1>
-            </div>
-          </div>
+        <div class="booking-info">
+          <h5> <strong> <%= booking.painting.title %> </strong></h5>
+          <h5><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h5>
+          <h5>Price per Day: <%= booking.painting.price_per_day %>€</h5>
+          <h5>Total Price: <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€</h5>
+          <h5>Booking due in <%= (booking.start_date - Date.today).to_i %> days</h5>
+        </div>
 
-          <div class="user-info">
-            <h5> <strong>Requested by: </strong> </h5>
+        <div class="user-info">
+          <h5> <strong>Booked by: </strong> </h5>
 
-            <div class="d-flex">
+          <div class="d-flex">
               <h5>Name: <%= booking.user.fullname %> </h5>
               <% unless booking.user.photo.attached? == false %>
                 <%= cl_image_tag booking.user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-bordered-large", :style=>"margin-top: -2vw; background-color: white; margin-left: 3vw;" %>
@@ -36,8 +33,6 @@
             <h5>Contact:</h5>
             <h5><%= booking.user.email %></h5>
           </div>
-
-
       </div>
       </div>
     <% end %>
