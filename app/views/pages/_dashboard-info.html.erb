@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+    <div class="profile-container">
+    <% unless current_user.photo.attached? == false %>
+      <%= cl_image_tag current_user.photo.key, height: 400, width: 400, crop: :fill, alt: "big-avatar", :class=>'avatar-giant' %>
+    <% else %>
+      <img src="https://image.flaticon.com/icons/svg/21/21104.svg" class="avatar-giant" alt="big-avatar">
+    <% end %>
+
+  <div class="d-flex justify-content-center mt-3 mb-3">
+    <h5> <strong> Account Information </strong></h5>
+  </div>
+
+  <div class="d-flex pb-3">
+    <h5 class="left-columns">First Name:</h5>
+    <h5> <%= "#{current_user.first_name}" %> </h5>
+  </div>
+  <div class="d-flex pb-3">
+    <h5 class="left-columns">Last Name:</h5>
+    <h5> <%= "#{current_user.last_name}" %> </h5>
+  </div>
+
+    <h5 class="left-columns pb-1">Email:</h5>
+  <div class="d-flex justify-content-center">
+    <h5 class="left-columns pb-3"> <%= "#{current_user.email}" %> </h5>
+  </div>
+
+  <div class="d-flex">
+    <h5 class="left-columns">Open Bookings:</h5>
+    <h5> None </h5>
+  </div>
+
+  <div class="d-flex justify-content-center mt-3">
+    <h2><%= link_to ('<i class="far fa-edit" style="color: rgb(80, 177, 186);margin-left: .7em;margin-top: 12px;margin-right: 12px;" margin-left: .7em;"></i>').html_safe, edit_user_registration_path %></h2>
+    <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn logout-button">Logout</a>
+  </div>
+
+  </div>
+
+
+  </div>
