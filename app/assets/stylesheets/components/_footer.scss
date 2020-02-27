@@ -13,13 +13,13 @@
   align-items: center;
 }
 .footer-links a {
-  color: rgb(80, 177, 186);
+  color: $new_art_color;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
 }
 .footer-links a:hover {
-  opacity: 0.8;
+  opacity: 0.5;
 }
 .footer .fa-heart {
   color: #D23333;
