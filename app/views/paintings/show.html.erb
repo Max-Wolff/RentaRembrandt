@@ -23,6 +23,18 @@
 
         <h2 class="painting-title">"<%= @painting.title %>" by <%= @painting.artist %></h2>
 
+      </div>
+
+
+
+      <p>This is the image Description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sint ab molestiae, repellat consectetur odit itaque? Suscipit quia sit alias dolor voluptatem ipsa expedita nam porro assumenda id, tempore fugit.</p>
+      <p>Place for Reviews</p>
+      <p>Review 1</p>
+      <p>Review 2</p>
+      <p>Review 3</p>
+    </div>
+
+    <div class="painting-user">
         <div class="owner-info">
 
           <% unless @owner.photo.attached? == false %>
@@ -35,13 +47,6 @@
         </div>
 
       </div>
-
-      <p>This is the image Description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sint ab molestiae, repellat consectetur odit itaque? Suscipit quia sit alias dolor voluptatem ipsa expedita nam porro assumenda id, tempore fugit.</p>
-      <p>Place for Reviews</p>
-      <p>Review 1</p>
-      <p>Review 2</p>
-      <p>Review 3</p>
-    </div>
 
     <% unless current_user == @owner %>
       <div class="booking-form">
