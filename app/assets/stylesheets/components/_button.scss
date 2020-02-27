@@ -21,7 +21,7 @@
 }
 
 .btn-main-customizable {
-  background-color: rgb(80, 177, 186);
+  background-color: $new_art_color;
   color: white;
   padding: 8px 30px;
   border-radius: 50px;
@@ -33,7 +33,7 @@
   text-decoration: none;
   background-color: white;
   color: rgb(80, 177, 186);
-  border: 1px solid rgb(80, 177, 186);
+  border: 1px solid $new_art_color;
   text-shadow: none;
 }
 
