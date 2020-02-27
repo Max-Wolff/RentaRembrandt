@@ -1,0 +1,33 @@
+<div id="navbar-landing">
+  <a id="icon-home" href="<%= paintings_path %>"><i class="fas fa-palette"></i></a>
+
+  <h5 class="ml-3"><strong>Welcome <%= current_user.fullname%></strong></h5>
+
+  <a href="<%= new_painting_path %>" class="btn btn-main-customizable">Add Painting</a>
+
+</div>
+
+<div id="mobile-first-digga" class="d-flex">
+
+  <div class="dashboard-width-mobile">
+
+    <%= render 'dashboard-tab-logic' %>
+
+  <div id="paintings" class="tab-content">
+    <div class="full-card-mobile">
+      <% @user.paintings.each do |painting| %>
+        <%= link_to (render 'shared/painting-card', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'dashboard-confirm-bookings' %>
+
+<%= render 'dashboard-upcoming-bookings' %>
+
+</div>
+  <div class="d-flex justify-content-center mt-3">
+    <h2><%= link_to ('<i class="far fa-edit" style="color: rgb(80, 177, 186);margin-left: .7em;margin-top: 12px;margin-right: 12px;" margin-left: .7em;"></i>').html_safe, edit_user_registration_path %></h2>
+    <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn logout-button">Logout</a>
+  </div>
+</div>
