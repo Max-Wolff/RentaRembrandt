@@ -50,3 +50,12 @@
   top: -20px;
   width: 40px;
 }
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .card-trip {
+    width: 240%;
+    z-index: 1;
+  }
+}
