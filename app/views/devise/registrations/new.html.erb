@@ -1,3 +1,5 @@
+<%= render 'shared/navbar-landing' %>
+
 <div class="login-signup-form">
   <h2 class="header">Sign up</h2>
 
@@ -27,9 +29,13 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "signup-button" %>
+      <%= f.button :submit, "Sign up", disabled: true, class: "signup-button-disabled" %>
     </div>
   <% end %>
+  <img id="captcha-image" src="<%= image_path('captcha-unvarified.png') %>" alt="">
+  <div style="width: 100%; display: flex; justify-content: center; padding: 2em;">
+    <canvas id="gameCanvas" width="400" height="400" style="margin: 0 auto;"></canvas>
+  </div>
 
   <%= render "devise/shared/links" %>
 </div>
