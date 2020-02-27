@@ -61,6 +61,7 @@ class PaintingsController < ApplicationController
   def destroy
     @painting.destroy
     # redirect_to paintings_path => MUST BE LIKE user_paintings_path(@user)
+    redirect_to paintings_path(@painting)
   end
 
   private
