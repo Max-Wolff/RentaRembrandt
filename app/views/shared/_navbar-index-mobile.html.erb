@@ -1,0 +1,39 @@
+<div id="navbar-landing">
+  <% unless user_signed_in?  %>
+    <a id="icon-home" href="<%= root_path %>">
+  <% else %>
+    <a id="icon-home" href="<%= paintings_path %>">
+  <% end %>
+      <i class="fas fa-palette"></i>
+    </a>
+
+
+  <div id="user-actions">
+
+      <% if user_signed_in? %>
+        <a href="<%= new_painting_path %>" class="btn btn-main-customizable">Add Painting</a>
+
+        <% unless current_user.photo.attached? == false %>
+          <a href="<%= dashboard_path %>"> <%= cl_image_tag current_user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "avatar dropdown-toggle avatar-bordered" %></a>
+        <% else %>
+          <a href="<%= dashboard_path %>"><img src="https://image.flaticon.com/icons/svg/21/21104.svg" class="avatar dropdown-toggle avatar-bordered" alt="avatar"></a>
+        <% end %>
+
+      <% else %>
+        <a href="<%= new_user_session_path %>" class="btn login-button">Log In</a>
+        <a href="<%= new_user_registration_path %>" class="btn signup-button">Sign Up</a>
+      <% end %>
+
+  </div>
+</div>
+
+<div class="search-container">
+  <%= simple_form_for :search, url: paintings_path, method: :get do |f| %>
+    <div class="search-form-control w-100 fixed-bottom mt-10">
+      <input class="form-control string required" type="text" name="query" id="search_query" placeholder="Search your next painting..." />
+      <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
+</div>
