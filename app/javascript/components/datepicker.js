@@ -7,6 +7,7 @@ const toggleDateInputs = () => {
   if (paintingPriceString) {
     const paintingPrice = Number(paintingPriceString.innerText.slice(0, paintingPriceString.innerText.length - 2));
   }
+
   if (startDateInput && endDateInput) {
     const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
 
