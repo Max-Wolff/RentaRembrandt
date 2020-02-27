@@ -1,5 +1,5 @@
 .dashboard-width {
-  width: 70vw;
+  flex-grow: 1;
 }
 
 .dashboard-header {
@@ -88,12 +88,10 @@
   border-radius: 10px;
   position: sticky;
   top: 167px;
-  height: 59vh;
+  height: fit-content;
   padding: 0 10px;
-  width: 25vw;
+  width: 20vw;
   text-align: center;
-  margin-left: 1em;
-  margin-top: 74px;
+  margin: 74px 2em 0 0;
   border: 1px solid #50b1ba;
-  margin-bottom: 25px;
 }
