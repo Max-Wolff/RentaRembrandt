@@ -19,37 +19,10 @@
 
   <%= render 'dashboard-confirm-bookings' %>
 
-  <div id="upcoming-bookings" class="dashboard-upcoming tab-content hide-content">
-    <div class="booking-list">
-      <% @user.bookings_as_owner.where(confirmed: true).each do |booking| %>
-        <div class="booking">
+<%= render 'dashboard-upcoming-bookings' %>
 
-          <% unless booking.painting.photo.attached? == false %>
-            <%= cl_image_tag booking.painting.photo.key, height: 400, width: 600, crop: :fill, alt: "painting", class: "booking-image" %>
-          <% else %>
-            <img class="booking-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
-          <% end %>
+</div>
 
-          <div class="booking-info">
-            <h3><%= booking.painting.title %></h3>
-            <h4><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h4>
-            <p><%= booking.painting.price_per_day %>€ per day - <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€ total</p>
-            <h4>Booking due in <%= (booking.start_date - Date.today).to_i %> days</h4>
-          </div>
-
-          <div class="user-info">
-            <h3>Rented by: <%= booking.user.fullname %></h3>
-
-            <% unless booking.user.photo.attached? == false %>
-              <%= cl_image_tag booking.user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-large" %>
-            <% end %>
-          </div>
-
-        </div>
-      <% end %>
-    </div>
-  </div>
-  </div>
 
   <%= render 'dashboard-info' %>
 
