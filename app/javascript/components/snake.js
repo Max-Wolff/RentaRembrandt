@@ -4,12 +4,14 @@ let foodY = 0;
 let score = 0;
 
 let gameCanvas = document.getElementById("gameCanvas");
-let ctx = gameCanvas.getContext("2d");
-ctx.font = "30px Arial";
-const backgroundColor = "#999";
-const snakeSize = 20;
-let dx = snakeSize;
-let dy = 0;
+if (gameCanvas) {
+  let ctx = gameCanvas.getContext("2d");
+  ctx.font = "30px Arial";
+  const backgroundColor = "#999";
+  const snakeSize = 20;
+  let dx = snakeSize;
+  let dy = 0;
+}
 
 
 const drawBackground = () => {
