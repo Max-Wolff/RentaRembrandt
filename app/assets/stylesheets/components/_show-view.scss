@@ -42,6 +42,7 @@
 
       p  {
         padding: 14px 2.3vw 14px 0;
+        text-align: justify;
       }
 
       .info-title {
@@ -52,12 +53,12 @@
         .painting-title {
         }
 
-        h2 {
-          font-size: 1.5rem;
-        }
-
 
       }
+      h2 {
+          font-size: 1.5rem;
+          border-bottom: 2px solid rgb(80, 177, 186);
+        }
     }
 
     .painting-user {
@@ -71,6 +72,9 @@
           flex-direction: column;
           align-items: center;
         }
+        p {
+          padding-top: 5px;
+        }
     }
 
     .booking-form {
@@ -80,6 +84,11 @@
       padding: 1em;
       margin-bottom: 2vh;
       margin-left: 2vw;
+
+      h2 {
+          font-size: 1.5rem;
+          border-bottom: 2px solid rgb(80, 177, 186);
+        }
 
       .booking-pricing {
         padding-bottom: .5em;
