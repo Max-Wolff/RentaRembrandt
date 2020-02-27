@@ -1,0 +1,11 @@
+<div class="booking-show">
+  <div class = "booking-info">
+    <h1>Your Booking was successful</h1>
+    <p class="blue">The total price is: </p><h2><%= @booking.painting.price_per_day*(@booking.end_date-@booking.start_date).to_i  %>‎€</h2><br<br>
+    <p class="blue">Your booking is valid from : </p><h2><%=@booking.start_date.strftime("%d of %B, %Y")  %> until <br><%=@booking.end_date.strftime("%d of %B, %Y") %><br></h2>
+    <p class="blue">Contact info of Owner : </p><h2><%=@booking.painting.user.first_name%> <%=@booking.painting.user.last_name%></h2><br><p> email: <%=@booking.painting.user.email%></p>
+  </div>
+  <div class="booking-info" style="background-image: url(<%= cl_image_path(@booking.painting.photo.key) %>)"></div>
+</div>
+
+
