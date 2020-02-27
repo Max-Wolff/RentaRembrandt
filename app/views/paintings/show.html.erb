@@ -23,6 +23,18 @@
 
         <h2 class="painting-title">"<%= @painting.title %>" by <%= @painting.artist %></h2>
 
+      </div>
+
+
+
+      <p>This is the image Description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sint ab molestiae, repellat consectetur odit itaque? Suscipit quia sit alias dolor voluptatem ipsa expedita nam porro assumenda id, tempore fugit.</p>
+      <h2 style="width: 25vw;">Painting Reviews</h2>
+      <p>Review 1</p>
+      <p>Review 2</p>
+      <p>Review 3</p>
+    </div>
+
+    <div class="painting-user">
         <div class="owner-info">
 
           <% unless @owner.photo.attached? == false %>
@@ -36,16 +48,9 @@
 
       </div>
 
-      <p>This is the image Description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sint ab molestiae, repellat consectetur odit itaque? Suscipit quia sit alias dolor voluptatem ipsa expedita nam porro assumenda id, tempore fugit.</p>
-      <p>Place for Reviews</p>
-      <p>Review 1</p>
-      <p>Review 2</p>
-      <p>Review 3</p>
-    </div>
-
     <% unless current_user == @owner %>
       <div class="booking-form">
-        <p class="booking-pricing"><%= @painting.price_per_day %>€ / Day</p>
+        <h2 class="booking-pricing">Book now:</h2>
 
         <div class="widget-content" data-unavailable="<%= @painting.unavailable_dates.to_json %>"></div>
         <%= simple_form_for([@painting, Booking.new]) do |f| %>

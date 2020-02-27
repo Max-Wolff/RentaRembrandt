@@ -1,8 +1,8 @@
 <div class="dashboard-tabs">
   <% if @user.bookings_as_owner.where(confirmed: false).count > 0 %>
-    <h5 class="tab active-tab" style="width: 33%;" data-show="paintings">My Paintings</h5>
-    <h5 class="tab" style="width: 33%;" data-show="confirm-bookings">Confirm Bookings</h5>
-    <h5 class="tab" style="width: 33%;" data-show="upcoming-bookings">Upcoming Bookings</h5>
+    <h5 class="tab active-tab" style="width: 30%;" data-show="paintings">My Paintings</h5>
+    <h5 class="tab" style="width: 30%;" data-show="confirm-bookings">Confirm Bookings</h5>
+    <h5 class="tab" style="width: 30%;" data-show="upcoming-bookings">Upcoming Bookings</h5>
   <% else %>
     <h5 class="tab active-tab" style="width: 45%;margin: 0px 20px;" data-show="paintings">My Paintings</h5>
     <h5 class="tab" style="width: 45%;margin: 0px 20px;" data-show="upcoming-bookings">Upcoming Bookings</h5>
