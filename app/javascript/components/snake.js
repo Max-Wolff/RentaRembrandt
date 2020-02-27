@@ -13,7 +13,6 @@ if (gameCanvas) {
   let dy = 0;
 }
 
-
 const drawBackground = () => {
   // Canvas Setup
   ctx.fillStyle = backgroundColor;
@@ -62,8 +61,8 @@ const drawFood = () => {
 }
 
 const setFood = () => {
-  foodX = Math.floor(Math.random() * (400 / snakeSize)) * snakeSize;
-  foodY = Math.floor(Math.random() * (400 / snakeSize)) * snakeSize;
+  foodX = Math.floor(Math.random() * (400 / snakeSize - 2)) * snakeSize + snakeSize;
+  foodY = Math.floor(Math.random() * (400 / snakeSize - 2)) * snakeSize + snakeSize;
 }
 
 const snakeEatFood = () => {
@@ -83,7 +82,7 @@ const moveSnake = () => {
 }
 
 const snakeDead = () => {
-  if (snake[0].x >= 400 || snake[0].x <= 0 || snake[0].y >= 400 || snake[0].y <= 0) {
+  if (snake[0].x >= 400 || snake[0].x < 0 || snake[0].y >= 400 || snake[0].y < 0) {
     gameOver();
     clearInterval(game);
   }
@@ -98,10 +97,14 @@ const snakeDead = () => {
 const allowSubmit = () => {
   if (score >= 3) {
     const signup = document.querySelector('.signup-button-disabled');
-    signup.classList.add('signup-button');
-    signup.classList.remove('signup-button-disabled');
-    signup.disabled = false;
-    gameCanvas.style = 'display: none;'
+    if (signup) {
+      signup.classList.add('signup-button');
+      signup.classList.remove('signup-button-disabled');
+      signup.disabled = false;
+    }
+    gameCanvas.style = 'display: none;';
+    document.getElementById('captcha-image').style = 'display: flex;';
+    document.querySelector('.fa-check').classList.add('checked');
   }
 }
 
@@ -121,16 +124,25 @@ const gameOver = () => {
 }
 
 const snakeGame = () => {
-  document.addEventListener("keydown", changeDirection);
   const captcha = document.getElementById('captcha-image')
   captcha.addEventListener('click', () => {
     captcha.style = 'display: none;'
+    drawBackground();
+    document.addEventListener("keydown", changeDirection);
     setFood();
-    let game = setInterval(() => {
-        update()
-      }, 200);
+    ctx.font = "30px Arial";
+    ctx.fillStyle = 'white';
+    ctx.fillText('Score 3 Points to sign up', 30, 40);
+    ctx.fillText('Use A, S, D, and W to move', 15, 140);
+    ctx.fillText('Press Space to start', 70, 260);
+    document.addEventListener("keydown", (e) => {
+      if (e.code == 'Space') {
+        let game = setInterval(() => {
+            update()
+          }, 200);
+      }
+    });
   })
 }
-
 
 export { snakeGame };
