@@ -7,7 +7,24 @@
   .show-image {
     margin-left: -5vw;
     width: 80vw;
-    height: auto;
+    height: 70vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+
+    &:hover {
+      -webkit-filter: brightness(70%);
+
+      .btn-hidden {
+        opacity: 1;
+      }
+    }
   }
 
   .show-info {
@@ -44,6 +61,22 @@
       .booking-pricing {
         padding-bottom: .5em;
         border-bottom: 1px solid #DDD;
+      }
+
+      .form-inputs {
+        padding-bottom: .5em;
+        border-bottom: 1px solid #DDD;
+      }
+
+      .booking-calculation {
+        display: flex;
+        justify-content: space-between;
+        padding-top: .5em;
+
+        .fee {
+          font-size: .8em;
+          color: #777
+        }
       }
     }
   }
