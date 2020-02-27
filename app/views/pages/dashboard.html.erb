@@ -1,97 +1,56 @@
-<div class="d-flex justify-content-center sticky-top">
-
-  <h2 class="dashboard-header"><strong>Welcome <%= @user.fullname %></strong><%= link_to ('<i class="far fa-edit" style="color: black; margin-left: .7em;"></i>').html_safe, edit_user_registration_path %></h2>
-
-  <% unless current_user.photo.attached? == false %>
-    <%= cl_image_tag current_user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar-big" %>
-  <% else %>
-    <img src="https://image.flaticon.com/icons/svg/21/21104.svg" class="avatar avatar-bordered" alt="avatar">
-  <% end %>
+<div class="d-flex justify-content-center dashboard-sign-in">
+  <h2 class="dashboard-header"><strong>Welcome <%= @user.fullname %></strong></h2>
 </div>
 
-<div class="dashboard-tabs">
-  <% if @user.bookings_as_owner.where(confirmed: false).count > 0 %>
-    <h5 class="tab active-tab" style="width: 33%;" data-show="paintings">My Paintings</h5>
-    <h5 class="tab" style="width: 33%;" data-show="confirm-bookings">Confirm Bookings</h5>
-    <h5 class="tab" style="width: 33%;" data-show="upcoming-bookings">Upcoming Bookings</h5>
-  <% else %>
-    <h5 class="tab active-tab" style="width: 50%;" data-show="paintings">My Paintings</h5>
-    <h5 class="tab" style="width: 50%;" data-show="upcoming-bookings">Upcoming Bookings</h5>
-  <% end %>
-</div>
+<div class="d-flex" style="padding-top: 70px;">
 
-<div id="paintings" class="tab-content">
-  <div class="full-card">
-    <% @user.paintings.each do |painting| %>
-      <%= link_to (render 'shared/painting-card', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>
-    <% end %>
+  <div class="dashboard-width">
+
+    <%= render 'dashboard-tab-logic' %>
+
+
+  <div id="paintings" class="tab-content">
+    <div class="full-card">
+      <% @user.paintings.each do |painting| %>
+        <%= link_to (render 'shared/painting-card', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>
+      <% end %>
+    </div>
   </div>
-  <div class="d-flex justify-content-center">
-    <a href="<%= destroy_user_session_path %>" data-method="delete" class="btn logout-button">Logout</a>
-  </div>
-</div>
 
-<div id="confirm-bookings" class="dashboard-confirm tab-content hide-content">
-  <div class="booking-list">
-    <% @user.bookings_as_owner.where(confirmed: false).each do |booking| %>
-      <div class="booking">
+  <%= render 'dashboard-confirm-bookings' %>
 
-        <% unless booking.painting.photo.attached? == false %>
-          <%= cl_image_tag booking.painting.photo.key, height: 400, width: 600, crop: :fill, alt: "painting", class: "booking-image" %>
-        <% else %>
-          <img class="booking-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
-        <% end %>
+  <div id="upcoming-bookings" class="dashboard-upcoming tab-content hide-content">
+    <div class="booking-list">
+      <% @user.bookings_as_owner.where(confirmed: true).each do |booking| %>
+        <div class="booking">
 
-        <div class="booking-info">
-          <h3><%= booking.painting.title %></h3>
-          <h4><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h4>
-          <p><%= booking.painting.price_per_day %>€ per day - <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€ total</p>
-          <div class="booking-actions">
-            <h1><%= link_to ('<i class="far fa-check-circle" style="color: #00DD66;"></i>').html_safe, booking_path(booking), method: :patch %></h1>
-            <h1><%= link_to ('<i class="far fa-times-circle" style="color: #FF4444;"></i>').html_safe, booking_path(booking), method: :delete %></h1>
+          <% unless booking.painting.photo.attached? == false %>
+            <%= cl_image_tag booking.painting.photo.key, height: 400, width: 600, crop: :fill, alt: "painting", class: "booking-image" %>
+          <% else %>
+            <img class="booking-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
+          <% end %>
+
+          <div class="booking-info">
+            <h3><%= booking.painting.title %></h3>
+            <h4><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h4>
+            <p><%= booking.painting.price_per_day %>€ per day - <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€ total</p>
+            <h4>Booking due in <%= (booking.start_date - Date.today).to_i %> days</h4>
           </div>
+
+          <div class="user-info">
+            <h3>Rented by: <%= booking.user.fullname %></h3>
+
+            <% unless booking.user.photo.attached? == false %>
+              <%= cl_image_tag booking.user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-large" %>
+            <% end %>
+          </div>
+
         </div>
-
-        <div class="user-info">
-          <h3>Rented by: <%= booking.user.fullname %></h3>
-
-          <% unless booking.user.photo.attached? == false %>
-            <%= cl_image_tag booking.user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-large" %>
-          <% end %>
-        </div>
-
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<div id="upcoming-bookings" class="dashboard-upcoming tab-content hide-content">
-  <div class="booking-list">
-    <% @user.bookings_as_owner.where(confirmed: true).each do |booking| %>
-      <div class="booking">
-
-        <% unless booking.painting.photo.attached? == false %>
-          <%= cl_image_tag booking.painting.photo.key, height: 400, width: 600, crop: :fill, alt: "painting", class: "booking-image" %>
-        <% else %>
-          <img class="booking-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
-        <% end %>
-
-        <div class="booking-info">
-          <h3><%= booking.painting.title %></h3>
-          <h4><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h4>
-          <p><%= booking.painting.price_per_day %>€ per day - <%= (booking.end_date - booking.start_date).to_i * booking.painting.price_per_day %>€ total</p>
-          <h4>Booking due in <%= (booking.start_date - Date.today).to_i %> days</h4>
-        </div>
-
-        <div class="user-info">
-          <h3>Rented by: <%= booking.user.fullname %></h3>
-
-          <% unless booking.user.photo.attached? == false %>
-            <%= cl_image_tag booking.user.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-large" %>
-          <% end %>
-        </div>
-
-      </div>
-    <% end %>
   </div>
+
+  <%= render 'dashboard-info' %>
+
 </div>
