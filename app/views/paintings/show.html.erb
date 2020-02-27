@@ -1,4 +1,7 @@
 
+<%= render 'shared/navbar-landing' %>
+
+
 <div class="show-view">
   <% @owner = User.find(@painting.user_id) %>
   <% unless @painting.photo.attached? == false %>

@@ -1,10 +1,9 @@
-.dashboard-width {
-  flex-grow: 1;
+.confirmation-info {
+  display: flex;
 }
 
-.dashboard-header {
-  margin-top: -71px;
-  position: fixed;
+.dashboard-width {
+  flex-grow: 1;
 }
 
 .dashboard-sign-in {
@@ -19,6 +18,7 @@
   align-items: center;
   padding: 1px;
   margin: 0 1em 2em 1em;
+  cursor: pointer;
 
   h5 {
     text-align: center;
@@ -39,36 +39,46 @@
 }
 
 .dashboard-confirm, .dashboard-upcoming {
-  padding: 1em;
+  padding: 0 1em 1em 1em;
 
   .booking-list {
 
     .booking {
       display: flex;
       background-color: white;
-      border: 1px #CCC solid;
+      border: 1px solid rgb(80, 177, 186);
       margin-bottom: 10px;
-      height: 195px;
+      height: 215px;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      margin-left: 3vw;
+      margin-right: 1vw;
 
       > img {
-        margin: 4px 10px 4px 4px;
+        margin: 4px 4px 4px 4px;
         width: auto;
         height: 95%;
+        border-radius: 8px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
       }
 
-      .booking-info {
-        flex-grow: 1;
 
-        .booking-actions {
-          display: flex;
-          justify-content: space-around;
-          width: 50%;
+        .booking-info {
+          flex-grow: 1;
+          padding: 10px;
+
+          .booking-actions {
+            display: flex;
+            justify-content: space-around;
+            width: 50%;
+            padding: 10px;
+          }
         }
-      }
 
-      .user-info {
-        flex-grow: 1;
-      }
+        .user-info {
+          flex-grow: 1;
+          padding: 10px;
+        }
     }
   }
 }
@@ -82,6 +92,7 @@
   margin-left: 16px;
   margin-right: 45px;
 }
+
 
 .profile-container {
   background-color: white;

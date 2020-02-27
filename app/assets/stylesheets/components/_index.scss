@@ -35,3 +35,11 @@
     padding-right: .5em;
   }
 }
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .index-view {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
