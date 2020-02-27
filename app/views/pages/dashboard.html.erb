@@ -30,6 +30,8 @@
           <img class="booking-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
         <% end %>
 
+        <div class="confirmation-info">
+
         <div class="booking-info">
           <h3><%= booking.painting.title %></h3>
           <h4><%= booking.start_date.strftime("%m/%d/%Y") %> - <%= booking.end_date.strftime("%m/%d/%Y") %></h4>
@@ -45,6 +47,7 @@
           <% end %>
         </div>
 
+      </div>
       </div>
     <% end %>
   </div>
