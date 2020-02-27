@@ -1,4 +1,8 @@
-<%= render 'shared/navbar-index' %>
+<% if mobile_device == "mobile" %>
+  <%= render 'shared/navbar-index-mobile' %>
+<% else %>
+  <%= render 'shared/navbar-index' %>
+<% end %>
 
 <div class="index-view">
 

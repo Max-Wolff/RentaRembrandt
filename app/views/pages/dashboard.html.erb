@@ -1,27 +1,5 @@
-<%= render 'shared/navbar-dashboard' %>
-
-<div class="d-flex" style="padding-top: 70px;">
-
-  <div class="dashboard-width">
-
-    <%= render 'dashboard-tab-logic' %>
-
-
-  <div id="paintings" class="tab-content">
-    <div class="full-card">
-      <% @user.paintings.each do |painting| %>
-        <%= link_to (render 'shared/painting-card-dashboard', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>
-      <% end %>
-    </div>
-  </div>
-
-  <%= render 'dashboard-confirm-bookings' %>
-
-<%= render 'dashboard-upcoming-bookings' %>
-
-</div>
-
-
-  <%= render 'dashboard-info' %>
-
-</div>
+<% if mobile_device == "mobile" %>
+  <%= render 'dashboard-mobile' %>
+<% else %>
+  <%= render 'dashboard-desktop' %>
+<% end %>

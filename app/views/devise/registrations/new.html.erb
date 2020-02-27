@@ -1,5 +1,7 @@
 <%= render 'shared/navbar-landing' %>
 
+<div class="jellyfish">
+
 <div class="login-signup-form">
   <h2 class="header">Sign up</h2>
 
@@ -28,8 +30,8 @@
                   input_html: { autocomplete: "new-password" } %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up", disabled: true, class: "signup-button-disabled" %>
+    <div class="form-actions d-flex justify-content-center mt-5">
+      <%= f.button :submit, "Sign up", class: "signup-button" %>
     </div>
   <% end %>
   <img id="captcha-image" src="<%= image_path('captcha-unvarified.png') %>" alt="">
@@ -38,4 +40,6 @@
   </div>
 
   <%= render "devise/shared/links" %>
+</div>
+
 </div>

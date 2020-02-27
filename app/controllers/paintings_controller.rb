@@ -22,6 +22,7 @@ class PaintingsController < ApplicationController
         lat: painting.latitude,
         lng: painting.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { painting: painting }),
+        image_url: helpers.asset_url('pinsel-marker.jpg'),
       }
     end
   end
@@ -61,6 +62,7 @@ class PaintingsController < ApplicationController
   def destroy
     @painting.destroy
     # redirect_to paintings_path => MUST BE LIKE user_paintings_path(@user)
+    redirect_to paintings_path(@painting)
   end
 
   private
