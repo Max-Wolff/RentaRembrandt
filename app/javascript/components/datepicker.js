@@ -3,9 +3,10 @@ import flatpickr from 'flatpickr';
 const toggleDateInputs = () => {
   const startDateInput = document.getElementById('booking_start_date');
   const endDateInput = document.getElementById('booking_end_date');
-  const paintingPriceString = document.getElementById('painting-price').innerText;
-  const paintingPrice = Number(paintingPriceString.slice(0, paintingPriceString.length - 2));
-
+  const paintingPriceString = document.getElementById('painting-price');
+  if (paintingPriceString) {
+    const paintingPrice = Number(paintingPriceString.innerText.slice(0, paintingPriceString.innerText.length - 2));
+  }
   if (startDateInput && endDateInput) {
     const unvailableDates = JSON.parse(document.querySelector('.widget-content').dataset.unavailable)
 
