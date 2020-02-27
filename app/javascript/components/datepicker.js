@@ -27,7 +27,7 @@ const toggleDateInputs = () => {
     });
     const endDateCalendar =
       flatpickr(endDateInput, {
-        dateFormat: "m-d-Y",
+        dateFormat: "Y-m-d",
         disable: unvailableDates,
         onChange: (selectedDates, selectedDate) => {
           let days = Math.round((new Date(selectedDates[0]) - new Date(startDateInput.value)) / 86400000);
