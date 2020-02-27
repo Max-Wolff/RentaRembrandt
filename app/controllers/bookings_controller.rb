@@ -19,12 +19,14 @@ class BookingsController < ApplicationController
     @booking.painting = @painting
     @booking.user = current_user
     authorize @booking
-
     if @booking.save
-      redirect_to painting_path(@painting)
+     redirect_to booking_path(@booking)
+
     else
       render 'paintings/show'
     end
+
+
   end
 
   def update
