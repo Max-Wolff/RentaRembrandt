@@ -1,6 +1,6 @@
 <%= render 'shared/navbar-landing' %>
 
-<div class="jellyfish">
+<div class="jellyfish" style="margin-top: -88px;">
 
 <div class="login-signup-form">
   <h2 class="header">Sign up</h2>
@@ -31,10 +31,14 @@
     </div>
 
     <div class="form-actions d-flex justify-content-center mt-5">
-      <%= f.button :submit, "Sign up", class: "signup-button" %>
+      <%= f.button :submit, "Sign up", disabled: true, class: "signup-button-disabled" %>
     </div>
   <% end %>
-  <img id="captcha-image" src="<%= image_path('captcha-unvarified.png') %>" alt="">
+  <div id="captcha-image">
+    <div class="checkbox"><i class="fas fa-check"></i></div>
+    <p>I'm not a robot</p>
+    <div class="captcha"></div>
+  </div>
   <div style="width: 100%; display: flex; justify-content: center; padding: 2em;">
     <canvas id="gameCanvas" width="400" height="400" style="margin: 0 auto;"></canvas>
   </div>
