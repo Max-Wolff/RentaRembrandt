@@ -38,3 +38,12 @@
   margin-left: 10vw;
   z-index: 1;
 }
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .search-form-control {
+    position: fixed;
+    z-index: 0;
+    transition: background-color 200ms linear;
+  }
+}
