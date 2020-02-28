@@ -28,6 +28,7 @@ gem 'pg_search', '~> 2.3.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'pry-rails'
 end
 
 group :development, :test do
