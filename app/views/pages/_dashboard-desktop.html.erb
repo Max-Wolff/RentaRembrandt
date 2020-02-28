@@ -18,6 +18,14 @@
 
   <%= render 'dashboard-upcoming-bookings' %>
 
+  <div class="tab-content hide-content" id="user-bookmarks">
+    <div class="full-card">
+      <% @user.bookmarks.each do |bookmark| %>
+        <%= link_to (render 'shared/painting-card-dashboard', painting: bookmark.painting), painting_path(bookmark.painting), :style=>'color: black; text-decoration: none' %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
   <%= render 'dashboard-info' %>
