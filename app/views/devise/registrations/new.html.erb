@@ -39,8 +39,8 @@
     <p>I'm not a robot</p>
     <div class="captcha"></div>
   </div>
-  <div style="width: 100%; display: flex; justify-content: center; padding: 2em;">
-    <canvas id="gameCanvas" width="400" height="400" style="margin: 0 auto;"></canvas>
+  <div id="popup-background" style="width: 100vw; height: 100vh; display: none; justify-content: center; align-items: center; padding: 2em; background-color: rgba(0, 0, 0, 0.7); position: absolute; top: 0; left: 0;">
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
   </div>
 
   <%= render "devise/shared/links" %>

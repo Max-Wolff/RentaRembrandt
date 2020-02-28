@@ -6,7 +6,7 @@
 
     <%= render 'dashboard-tab-logic' %>
 
-  <div id="paintings" class="tab-content">
+  <div class="tab-content">
     <div class="full-card">
       <% @user.paintings.each do |painting| %>
         <%= link_to (render 'shared/painting-card-dashboard', painting: painting), painting_path(painting), :style=>'color: black; text-decoration: none' %>

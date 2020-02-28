@@ -7,27 +7,65 @@
   <% unless @painting.photo.attached? == false %>
     <div class="show-image" style="background-image: url(<%= cl_image_path(@painting.photo.key) %>)">
       <% if current_user == @owner %>
-       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+        <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+      <% else %>
+        <% if Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
+          <% @bookmark = Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
+          <%= link_to '<i class="fas fa-heart"></i>'.html_safe, painting_bookmark_path(@bookmark.painting, @bookmark), method: :delete, class: 'bookmark-icon btn-hidden bookmarked' %>
+        <% else %>
+          <%= link_to '<i class="far fa-heart"></i>'.html_safe, painting_bookmarks_path(@painting), method: :post, class: 'bookmark-icon btn-hidden' %>
+        <% end %>
       <% end %>
     </div>
   <% else %>
     <div class="show-image" style="background-image: url('https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg')">
       <% if current_user == @owner %>
-       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+        <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+      <% else %>
+        <% if Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
+          <% @bookmark = Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
+          <%= link_to '<i class="fas fa-heart"></i>'.html_safe, painting_bookmark_path(@bookmark.painting, @bookmark), method: :delete, class: 'bookmark-icon btn-hidden bookmarked' %>
+        <% else %>
+          <%= link_to '<i class="far fa-heart"></i>'.html_safe, painting_bookmarks_path(@painting), method: :post, class: 'bookmark-icon btn-hidden' %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
   <div class="show-info">
+
     <div class="painting-info">
       <div class="info-title">
         <h2 class="painting-title">"<%= @painting.title %>" by <%= @painting.artist %></h2>
       </div>
-      <p>This is the image Description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sint ab molestiae, repellat consectetur odit itaque? Suscipit quia sit alias dolor voluptatem ipsa expedita nam porro assumenda id, tempore fugit.</p>
+
+      <p>The tone of the painting is muted, the style reminiscent of Monet. The painting dominates the walls, every colour is bold and painted with such precise lines that it almost looks like a mosaic. </p>
       <h2 style="width: 25vw;">Painting Reviews</h2>
-      <p>Review 1</p>
-      <p>Review 2</p>
-      <p>Review 3</p>
+
+      <div class="review-container">
+        <div class="d-review-style" style="width: 25vw; margin-top: 4vh;">
+        <div class="d-flex justify-content-between">
+          <h5 style="color: #e61e6e;">Andy Baranov</h5> <h5><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></h5>
+        </div>
+          <h6>The most professional design I have ever seen. In love with this awesome spacing 🥰</h6>
+        </div>
+
+
+        <div class="review-style" style="width: 25vw; margin-top: 4vh;">
+          <div class="d-flex justify-content-between">
+            <h5 style="color: #e61e6e;">Richard O'Grady</h5> <h5><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></h5>
+          </div>
+          <h6>Even more beautiful than my vacation! (In case you didn't notice I was gone) <strong>#tanned</strong> 😎</h6>
+        </div>
+        <div class="review-style" style="width: 25vw; margin-top: 4vh;">
+          <div class="d-flex justify-content-between">
+            <h5 style="color: #e61e6e;">Leon Entrup</h5> <h5><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></h5>
+          </div>
+          <h6>Never believed that a sign up page could be this freaking awesome! Unfortunately, took me <strong>7</strong> attempts to sign up 😥</h6>
+        </div>
+      </div>
+
     </div>
+
     <div class="painting-user">
         <div class="owner-info">
           <% unless @owner.photo.attached? == false %>
