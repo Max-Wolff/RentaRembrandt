@@ -1,0 +1,58 @@
+<div class="show-view">
+  <% @owner = User.find(@painting.user_id) %>
+  <% unless @painting.photo.attached? == false %>
+    <div class="show-image" style="background-image: url(<%= cl_image_path(@painting.photo.key) %>)">
+      <% if current_user == @owner %>
+       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="show-image" style="background-image: url('https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg')">
+      <% if current_user == @owner %>
+       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="show-info-mobile">
+    <div class="painting-info">
+      <div class="info-title">
+        <h2 class="painting-title">"<%= @painting.title %>" by <%= @painting.artist %></h2>
+      </div>
+      <p>This is the image Description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sint ab molestiae, repellat consectetur odit itaque? Suscipit quia sit alias dolor voluptatem ipsa expedita nam porro assumenda id, tempore fugit.</p>
+      <h2 style="width: 25vw;">Painting Reviews</h2>
+      <p>Review 1</p>
+      <p>Review 2</p>
+      <p>Review 3</p>
+    </div>
+
+    <% unless current_user == @owner %>
+      <div class="booking-form">
+        <h2 class="booking-pricing">Book now:</h2>
+        <div class="widget-content" data-unavailable="<%= @painting.unavailable_dates.to_json %>"></div>
+        <%= simple_form_for([@painting, Booking.new]) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <div class="form-inputs">
+            <%= f.input :start_date, as: :string, label: "From", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
+            <%= f.input :end_date, as: :string, label: 'Until'.html_safe, placeholder: "Until", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
+          </div>
+          <div class="booking-calculation">
+            <div style="display: flex;"><p style="margin-right: 3pt;"><%= @painting.price_per_day %> € x </p><p id="calculation-price">1 Day</p></div>
+            <p id="painting-price"><%= @painting.price_per_day %> €</p>
+          </div>
+          <div class="booking-calculation">
+            <p class="fee">5% Booking fee</p>
+            <p class="fee" id="fee-price"><%= number_to_currency(@painting.price_per_day * 0.05, unit: '') %> €</p>
+          </div>
+          <div class="booking-calculation">
+            <p>Total</p>
+            <p id="total-price"><%= number_to_currency(@painting.price_per_day * 1.05, unit: '') %> €</p>
+          </div>
+          <div class="form-actions">
+            <%= f.submit "Request", class: "btn btn-main-customizable btn-square btn-lg btn-block" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
