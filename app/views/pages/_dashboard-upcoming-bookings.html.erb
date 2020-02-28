@@ -1,6 +1,6 @@
 <div id="upcoming-bookings" class="dashboard-upcoming tab-content hide-content">
   <div class="booking-list">
-    <% @user.bookings_as_owner.where(confirmed: true).each do |booking| %>
+    <% @user.bookings_as_owner.where("start_date > ?", Date.today).where(confirmed: true).each do |booking| %>
       <div class="booking">
 
         <% unless booking.painting.photo.attached? == false %>
