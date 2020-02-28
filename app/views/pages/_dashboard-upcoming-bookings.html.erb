@@ -4,7 +4,7 @@
       <div class="booking">
 
         <% unless booking.painting.photo.attached? == false %>
-          <%= cl_image_tag booking.painting.photo.key, height: 400, width: 600, crop: :fill, alt: "painting", class: "booking-image" %>
+          <%= cl_image_tag booking.painting.photo.key, height: 200, width: 550, crop: :fill, alt: "painting", class: "booking-image" %>
         <% else %>
           <img class="booking-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
         <% end %>
