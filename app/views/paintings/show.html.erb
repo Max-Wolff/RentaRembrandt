@@ -107,3 +107,29 @@
     <% end %>
   </div>
 </div>
+
+<% if params[:booking] %>
+  <% if Booking.find(params[:booking]) %>
+    <% @booking = Booking.find(params[:booking]) %>
+    <div id="popup-bg" style="width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; padding: 2em; background-color: rgba(0, 0, 0, 0.7); position: absolute; top: 0; left: 0;">
+      <div class="booking-show">
+        <div class="success-banner">
+          <h1 class="success-banner">Your Booking was successful</h1>
+          <i id="close-icon" class="fas fa-times"></i>
+        </div>
+
+        <div class="booking-info">
+          <h2><strong><%= @booking.painting.title %> by <%= @booking.painting.artist %></strong></h2>
+          <br>
+          <h5>Your time period:</h5>
+          <h4><strong><%= @booking.start_date.strftime("%d of %B, %Y") %> - <%= @booking.end_date.strftime("%d of %B, %Y") %></strong></h4>
+          <br>
+          <h5>The total price will amount to:</h5>
+          <h4><strong><%= @booking.painting.price_per_day*(@booking.end_date-@booking.start_date).to_i  %>‎€</strong></h4>
+          <h5>Contact the Owner to discuss the details:</h5>
+          <h4><a class="signup-button" href="mailto: <%= @booking.painting.user.email %>"><i class="far fa-envelope"></i><%= @booking.painting.user.fullname %></a></h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
