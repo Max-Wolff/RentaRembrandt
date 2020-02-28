@@ -23,7 +23,7 @@
     transition: all 1s ease;
 
     &:hover {
-      -webkit-filter: brightness(70%);
+      -webkit-filter: brightness(80%);
 
       .btn-hidden {
         opacity: 1;
@@ -115,16 +115,44 @@
   }
 }
 
- .show-info-mobile {
-    margin-top: 2em;
-    width: 100%;
-    padding-bottom: 2em;
-  }
+.fa-star {
+  color: gold;
+}
+
+h6 {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding-bottom: 3vh;
+}
+
+.show-info-mobile {
+  margin-top: 2em;
+  width: 100%;
+  padding-bottom: 2em;
+}
+
+.show-image-mobile {
+    margin-left: -5vw;
+    border-radius: 8px;
+    width: 70vw;
+    height: 23vh;
+    background-size: cover;
+    display: flex;
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .show-info {
     flex-direction: column;
   }
+  .fa-star {
+    font-size: 12px;
+  }
 }
-

@@ -18,6 +18,7 @@
 @import "show-view";
 @import "sign-up";
 @import "booking-show";
+@import "bookmark";
 
 .index-view {
   display: flex;
@@ -46,3 +47,5 @@
     flex-direction: column-reverse;
   }
 }
+
+
