@@ -7,7 +7,8 @@ class PaintingsController < ApplicationController
     @paintings = policy_scope(Painting)
     @paintings = Painting.geocoded #returns paintings with coordinates
     if params[:query].present?
-      @paintings = Painting.search_by_title_and_artist(params[:query])
+      @paintings = Painting.global_search(params[:query])
+
     else
       @paintings = Painting.all
     end
