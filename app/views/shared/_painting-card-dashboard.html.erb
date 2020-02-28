@@ -1,7 +1,7 @@
 <div class="card-trip">
 
   <% unless painting.photo.attached? == false %>
-    <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill, class: "card-image" %>
+    <%= cl_image_tag painting.photo.key, height: 200, width: 550, crop: :fill, class: "card-image" %>
   <% else %>
     <img class="card-image" src="https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg" />
   <% end %>
