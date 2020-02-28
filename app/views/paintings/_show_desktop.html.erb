@@ -1,32 +1,18 @@
 <div class="show-view">
   <% @owner = User.find(@painting.user_id) %>
-  <% unless @painting.photo.attached? == false %>
-    <div class="show-image" style="background-image: url(<%= cl_image_path(@painting.photo.key) %>)">
-      <% if current_user == @owner %>
-        <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
-      <% else %>
-        <% if Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
-          <% @bookmark = Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
-          <%= link_to '<i class="fas fa-heart"></i>'.html_safe, painting_bookmark_path(@bookmark.painting, @bookmark), method: :delete, class: 'bookmark-icon btn-hidden bookmarked' %>
-        <% else %>
-          <%= link_to '<i class="far fa-heart"></i>'.html_safe, painting_bookmarks_path(@painting), method: :post, class: 'bookmark-icon btn-hidden' %>
-        <% end %>
-      <% end %>
-    </div>
+
+  <% if user_signed_in?%>
+      <%= render 'photo_and_bookmark' %>
   <% else %>
-    <div class="show-image" style="background-image: url('https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg')">
-      <% if current_user == @owner %>
-        <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
-      <% else %>
-        <% if Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
-          <% @bookmark = Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
-          <%= link_to '<i class="fas fa-heart"></i>'.html_safe, painting_bookmark_path(@bookmark.painting, @bookmark), method: :delete, class: 'bookmark-icon btn-hidden bookmarked' %>
-        <% else %>
-          <%= link_to '<i class="far fa-heart"></i>'.html_safe, painting_bookmarks_path(@painting), method: :post, class: 'bookmark-icon btn-hidden' %>
-        <% end %>
-      <% end %>
-    </div>
+    <% unless @painting.photo.attached? == false %>
+      <div class="show-image" style="background-image: url(<%= cl_image_path(@painting.photo.key) %>)">
+      </div>
+    <% else %>
+      <div class="show-image" style="background-image: url('https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg')">
+      </div>
+    <% end %>
   <% end %>
+
   <div class="show-info">
 
     <div class="painting-info">
