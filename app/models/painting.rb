@@ -11,8 +11,11 @@ class Painting < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model
-  pg_search_scope :search_by_title_and_artist,
+  pg_search_scope :global_search,
     against: [ :title, :artist ],
+    associated_against: {
+      user: [ :first_name, :last_name ]
+    },
     using: {
       tsearch: { prefix: true }
     }

@@ -1,0 +1,80 @@
+<div class="show-view">
+  <% @owner = User.find(@painting.user_id) %>
+  <% unless @painting.photo.attached? == false %>
+    <div class="show-image-mobile" style="background-image: url(<%= cl_image_path(@painting.photo.key) %>)">
+      <% if current_user == @owner %>
+       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="show-image-mobile" style="background-image: url('https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg')">
+      <% if current_user == @owner %>
+       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="show-info-mobile">
+   <div class="painting-info">
+      <div class="info-title">
+        <h2 class="painting-title">"<%= @painting.title %>" by <%= @painting.artist %></h2>
+      </div>
+
+      <p>The tone of the painting is muted, the style reminiscent of Monet. The painting dominates the walls, every colour is bold and painted with such precise lines that it almost looks like a mosaic. </p>
+      <h2>Painting Reviews</h2>
+
+      <div class="review-container">
+        <div class="d-review-style">
+        <div class="d-flex justify-content-between">
+          <h5 style="color: #e61e6e;">Andy Baranov</h5> <h5><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></h5>
+        </div>
+          <h6>The most professional design I have ever seen. In love with this awesome spacing 🥰</h6>
+        </div>
+
+
+        <div class="review-style">
+          <div class="d-flex justify-content-between">
+            <h5 style="color: #e61e6e;">Richard O'Grady</h5> <h5><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></h5>
+          </div>
+          <h6>Even more beautiful than my vacation! (In case you didn't notice I was gone) <strong>#tanned</strong> 😎</h6>
+        </div>
+        <div class="review-style">
+          <div class="d-flex justify-content-between">
+            <h5 style="color: #e61e6e;">Leon Entrup</h5> <h5><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></h5>
+          </div>
+          <h6>Never believed that a sign up page could be this freaking awesome! Unfortunately, took me <strong>7</strong> attempts to sign up 😥</h6>
+        </div>
+      </div>
+
+    </div>
+
+    <% unless current_user == @owner %>
+      <div class="booking-form">
+        <h2 class="booking-pricing">Book now:</h2>
+        <div class="widget-content" data-unavailable="<%= @painting.unavailable_dates.to_json %>"></div>
+        <%= simple_form_for([@painting, Booking.new]) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <div class="form-inputs">
+            <%= f.input :start_date, as: :string, label: "From", placeholder: "From", wrapper_html: { class: "inline_field_wrapper" } %>
+            <%= f.input :end_date, as: :string, label: 'Until'.html_safe, placeholder: "Until", disabled: true, wrapper_html: { class: "inline_field_wrapper" } %>
+          </div>
+          <div class="booking-calculation">
+            <div style="display: flex;"><p style="margin-right: 3pt;"><%= @painting.price_per_day %> € x </p><p id="calculation-price">1 Day</p></div>
+            <p id="painting-price"><%= @painting.price_per_day %> €</p>
+          </div>
+          <div class="booking-calculation">
+            <p class="fee">5% Booking fee</p>
+            <p class="fee" id="fee-price"><%= number_to_currency(@painting.price_per_day * 0.05, unit: '') %> €</p>
+          </div>
+          <div class="booking-calculation">
+            <p>Total</p>
+            <p id="total-price"><%= number_to_currency(@painting.price_per_day * 1.05, unit: '') %> €</p>
+          </div>
+          <div class="form-actions">
+            <%= f.submit "Request", class: "btn btn-main-customizable btn-square btn-lg btn-block" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
