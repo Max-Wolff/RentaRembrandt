@@ -1,4 +1,5 @@
 import flatpickr from 'flatpickr';
+import "flatpickr/dist/flatpickr.min.css";
 
 const toggleDateInputs = () => {
   const startDateInput = document.getElementById('booking_start_date');
