@@ -1,0 +1,18 @@
+.bookmark-icon {
+  font-size: 90pt;
+  color: white;
+  transition: color .5s ease;
+
+  &:hover {
+    color: $new_art_color;
+  }
+}
+
+.bookmarked {
+  color: $new_art_color;
+  transition: color .5s ease;
+
+  &:hover {
+    color: white;
+  }
+}

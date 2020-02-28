@@ -9,7 +9,12 @@
       <% if current_user == @owner %>
         <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
       <% else %>
-        <%= link_to 'Bookmark', painting_bookmark_path(@painting), method: :post, class: "btn-edit btn-center btn-hidden" %>
+        <% if Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
+          <% @bookmark = Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
+          <%= link_to '<i class="fas fa-heart"></i>'.html_safe, painting_bookmark_path(@bookmark.painting, @bookmark), method: :delete, class: 'bookmark-icon btn-hidden bookmarked' %>
+        <% else %>
+          <%= link_to '<i class="far fa-heart"></i>'.html_safe, painting_bookmarks_path(@painting), method: :post, class: 'bookmark-icon btn-hidden' %>
+        <% end %>
       <% end %>
     </div>
   <% else %>
@@ -17,7 +22,12 @@
       <% if current_user == @owner %>
         <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
       <% else %>
-        <%= link_to 'Bookmark', painting_bookmark_path(@painting), method: :post, class: "btn-edit btn-center btn-hidden" %>
+        <% if Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
+          <% @bookmark = Bookmark.where(painting_id: @painting.id).find_by_user_id(current_user.id) %>
+          <%= link_to '<i class="fas fa-heart"></i>'.html_safe, painting_bookmark_path(@bookmark.painting, @bookmark), method: :delete, class: 'bookmark-icon btn-hidden bookmarked' %>
+        <% else %>
+          <%= link_to '<i class="far fa-heart"></i>'.html_safe, painting_bookmarks_path(@painting), method: :post, class: 'bookmark-icon btn-hidden' %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
