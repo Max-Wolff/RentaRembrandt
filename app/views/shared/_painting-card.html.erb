@@ -14,7 +14,7 @@
       </div>
     <h2 class="card-trip-pricing"><%= painting.price_per_day %>€ per Day</h2>
     <% unless @owner.photo.attached? == false %>
-      <%= cl_image_tag @owner.photo.key, height: 200, width: 550, crop: :fill, alt: "avatar", class: "card-trip-user avatar-bordered" %>
+      <%= cl_image_tag @owner.photo.key, height: 400, width: 400, crop: :fill, alt: "avatar", class: "card-trip-user avatar-bordered" %>
     <% else %>
       <img class="card-trip-user avatar-bordered" src="https://image.flaticon.com/icons/svg/21/21104.svg" style="background-color: white;" />
     <% end %>
