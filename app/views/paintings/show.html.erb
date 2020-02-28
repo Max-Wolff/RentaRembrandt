@@ -7,13 +7,17 @@
   <% unless @painting.photo.attached? == false %>
     <div class="show-image" style="background-image: url(<%= cl_image_path(@painting.photo.key) %>)">
       <% if current_user == @owner %>
-       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+        <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+      <% else %>
+        <%= link_to 'Bookmark', painting_bookmark_path(@painting), method: :post, class: "btn-edit btn-center btn-hidden" %>
       <% end %>
     </div>
   <% else %>
     <div class="show-image" style="background-image: url('https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg')">
       <% if current_user == @owner %>
-       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+        <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+      <% else %>
+        <%= link_to 'Bookmark', painting_bookmark_path(@painting), method: :post, class: "btn-edit btn-center btn-hidden" %>
       <% end %>
     </div>
   <% end %>
