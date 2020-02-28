@@ -6,7 +6,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def show?
-    true  # Anyone can view a bookinng
+    record.user == user || record.painting.user == user  # Anyone can view a bookinng
   end
 
   def create?

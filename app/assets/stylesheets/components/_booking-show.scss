@@ -1,37 +1,38 @@
-
-.booking-show {
-    margin-top: 2em;
-    display: flex;
-    justify-content: space-between;
-    width: 70vw;
-    height: 30vw;
-    margin: 0 auto;
-    background: white;
-    padding: 0 5vw;
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    margin-bottom: 100px;
+.block-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
-  .booking-info {
-      width:48%;
+.booking-show {
+    width: 60vw;
+    height: 40vw;
+    margin: 2em auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    overflow: hidden;
 
+    .success-banner {
+      width: 100%;
+      padding: .5em;
+      background: $login_color;
+      color: white;
+      text-align: center;
+      position: relative;
+      letter-spacing: .1em;
 
-  }
-  .booking-info h1{
-    margin-bottom: 1em;
-  }
+      #close-icon {
+        position: absolute;
+        top: .2em;
+        right: .5em;
+        font-size: 3em;
+        cursor: pointer;
+      }
+    }
 
-
-
-  .booking-info p{
-    font: bold 25px ;
-    color: blue;
-  }
-
-
-
-
-
-
-
+    .booking-info h2, .booking-info h3, .booking-info h4, .booking-info h5 {
+      text-align: center;
+      padding: 10px;
+      letter-spacing: .2em;
+    }
+}

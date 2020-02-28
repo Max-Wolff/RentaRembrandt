@@ -32,6 +32,8 @@ const toggleDateInputs = () => {
         dateFormat: "Y-m-d",
         disable: unvailableDates,
         onChange: (selectedDates, selectedDate) => {
+          const paintingPriceString = document.getElementById('painting-price');
+          const paintingPrice = Number(paintingPriceString.innerText.slice(0, paintingPriceString.innerText.length - 2));
           let days = Math.round((new Date(selectedDates[0]) - new Date(startDateInput.value)) / 86400000);
           const totalPaintingPrice = paintingPrice * days;
           document.getElementById('painting-price').innerText = `${totalPaintingPrice} €`;
