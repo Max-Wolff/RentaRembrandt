@@ -103,6 +103,7 @@ const snakeGame = () => {
       }
       gameCanvas.style = 'display: none;';
       document.getElementById('captcha-image').style = 'display: flex;';
+      document.getElementById("popup-background").style.display = 'none';
       document.querySelector('.fa-check').classList.add('checked');
     }
   }
@@ -125,6 +126,8 @@ const snakeGame = () => {
   const captcha = document.getElementById('captcha-image')
   captcha.addEventListener('click', () => {
     captcha.style = 'display: none;'
+    const popupBg = document.getElementById("popup-background");
+    popupBg.style.display = 'flex';
     drawBackground();
     document.addEventListener("keydown", changeDirection);
     setFood();
