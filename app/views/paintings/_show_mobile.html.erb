@@ -1,18 +1,16 @@
 <div class="show-view">
   <% @owner = User.find(@painting.user_id) %>
-  <% unless @painting.photo.attached? == false %>
-    <div class="show-image-mobile" style="background-image: url(<%= cl_image_path(@painting.photo.key) %>)">
-      <% if current_user == @owner %>
-       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
+    <% if user_signed_in?%>
+        <%= render 'photo_and_bookmark' %>
+    <% else %>
+      <% unless @painting.photo.attached? == false %>
+        <div class="show-image-mobile" style="background-image: url(<%= cl_image_path(@painting.photo.key) %>)">
+        </div>
+      <% else %>
+        <div class="show-image-mobile" style="background-image: url('https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg')">
+        </div>
       <% end %>
-    </div>
-  <% else %>
-    <div class="show-image-mobile" style="background-image: url('https://p5.focus.de/img/fotos/crop3263390/0685332128-w1200-h627-q75-p5/Ausstellungen-Das-Bild-Der-Schrei-von-Edvard-Munch.jpg')">
-      <% if current_user == @owner %>
-       <%= link_to "Edit your Painting", edit_painting_path(@painting), class: "btn-edit btn-center btn-hidden" %>
-      <% end %>
-    </div>
-  <% end %>
+    <% end %>
   <div class="show-info-mobile">
    <div class="painting-info">
       <div class="info-title">
